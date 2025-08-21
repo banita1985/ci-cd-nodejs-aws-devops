@@ -1,0 +1,27 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: self-hosted   # 👈 use your EC2 runner
+    steps:
+     #step-1 Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # step-2 setup nodejs
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      # step-3 install and build and test
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build app
+        run: npm run build
