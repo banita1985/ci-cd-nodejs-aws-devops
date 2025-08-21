@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted, ec2]   # 👈 use your EC2 runner
+    runs-on: ubuntu-latest   
     steps:
      # Checkout the code
       - name: Checkout code
